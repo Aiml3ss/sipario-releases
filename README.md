@@ -38,6 +38,23 @@ Sipario is a native media player for your own media sources.
   Stream Info, and sideload updates.
 - No bundled media catalog, no hosted streams, no account requirement.
 
+## Screenshots
+
+_Desktop app (macOS). Browse, live TV, library, and the native player._
+
+| | |
+|---|---|
+| ![Home](docs/screenshots/home.jpg) | ![Live TV](docs/screenshots/live.jpg) |
+| ![Library](docs/screenshots/library.jpg) | ![Films](docs/screenshots/films.jpg) |
+
+The player — frosted control bar, live HDR badge, in-player menus:
+
+![Player](docs/screenshots/player.jpg)
+
+Full-quality playback through the native mpv pipeline:
+
+![Player playing](docs/screenshots/player-playing.jpg)
+
 ## Install Notes
 
 ### macOS
