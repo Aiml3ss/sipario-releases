@@ -1,0 +1,66 @@
+# Carry-forward guard for release assets.
+#
+# sipario.tv serves both app downloads through GitHub's `releases/latest`
+# asset URLs:
+#
+#   sipario.tv/download/mac → releases/latest/download/Sipario-macos.dmg
+#   sipario.tv/download/tv  → releases/latest/download/Sipario-TV.apk
+#
+# `releases/latest/download/<asset>` resolves ONLY against the newest
+# release object, and old releases get deleted here — so a new release
+# published without one of the two assets silently 404s that platform's
+# download (and a missing .dmg also kills the macOS app's in-app update
+# check, which parses the latest release for a .dmg asset).
+#
+# This workflow runs whenever a release is published and copies any of the
+# two canonical assets that are missing from it out of the most recent
+# older release that still has them. Publishing a mac-only or TV-only
+# release therefore stays safe: the other platform's asset rides along
+# automatically. Full runbook: main repo, apps/android-tv/README.md
+# §Publish.
+name: Preserve release assets
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  carry-forward:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy missing canonical assets from the previous release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          CANONICAL="Sipario-macos.dmg Sipario-TV.apk"
+
+          have="$(gh release view "$TAG" --repo "$REPO" --json assets -q '.assets[].name')"
+          echo "release $TAG assets: ${have:-<none>}"
+
+          for asset in $CANONICAL; do
+            if echo "$have" | grep -qx "$asset"; then
+              echo "OK: $asset already present on $TAG"
+              continue
+            fi
+
+            # Newest release other than this one that carries the asset.
+            donor="$(gh api "repos/$REPO/releases" --paginate \
+              -q "[.[] | select(.tag_name != \"$TAG\") | select(.assets[].name == \"$asset\")][0].tag_name" || true)"
+
+            if [ -z "$donor" ] || [ "$donor" = "null" ]; then
+              echo "::warning::$asset missing from $TAG and no older release has it — sipario.tv download for it will 404 until it is uploaded manually."
+              continue
+            fi
+
+            echo "carry-forward: $asset ($donor → $TAG)"
+            gh release download "$donor" --repo "$REPO" --pattern "$asset" --dir /tmp/carry
+            gh release upload "$TAG" "/tmp/carry/$asset" --repo "$REPO" --clobber
+            rm -f "/tmp/carry/$asset"
+            echo "OK: $asset attached to $TAG"
+          done
