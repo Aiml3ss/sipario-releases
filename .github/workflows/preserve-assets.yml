@@ -10,9 +10,9 @@
 # for a .dmg asset.
 #
 # This workflow runs whenever a release is published and copies the canonical
-# macOS asset if it is missing from the newest release. Android TV uses explicit
-# versioned APK URLs via /download/tv and public/tv-app-version.json, so it is
-# not carried forward here.
+# macOS + Android TV assets if missing from the newest release. Both download
+# routes (/download/mac, /download/tv) resolve ONLY against releases/latest, so
+# every new release must carry both canonical assets.
 name: Preserve release assets
 
 on:
@@ -33,7 +33,7 @@ jobs:
           TAG: ${{ github.event.release.tag_name }}
         run: |
           set -euo pipefail
-          CANONICAL="Sipario-macos.dmg"
+          CANONICAL="Sipario-macos.dmg Sipario-TV.apk"
 
           have="$(gh release view "$TAG" --repo "$REPO" --json assets -q '.assets[].name')"
           echo "release $TAG assets: ${have:-<none>}"
