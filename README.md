@@ -19,7 +19,7 @@ not contain the development source tree; active development stays in the private
 | Platform | Current Download | Release Notes |
 |---|---|---|
 | macOS desktop | [Download the DMG](https://github.com/Aiml3ss/sipario-releases/releases/latest/download/Sipario-macos.dmg) | [macos-v0.41.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.41.0) |
-| Android TV | [Download the APK](https://github.com/Aiml3ss/sipario-releases/releases/download/android-tv-v1.4.9/sipario-android-tv-v1.4.9.apk) | [android-tv-v1.4.9](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.4.9) |
+| Android TV | [Download the APK](https://github.com/Aiml3ss/sipario-releases/releases/latest/download/Sipario-TV.apk) | [android-tv-v1.5.10](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.5.10) |
 
 Stable website links:
 
@@ -28,15 +28,30 @@ Stable website links:
 
 ## What You Get
 
-Sipario is a native media player for your own media sources.
+Sipario is a native media player for your own sources — built around the player,
+not a catalog.
 
-- macOS: SwiftUI/AppKit desktop app with libmpv playback, in-window GPU video,
-  desktop picture controls, upscaling/filter passes, subtitle controls, and
-  self-updates.
-- Android TV: native Jetpack Compose app built for the remote, libmpv playback,
-  hardware decode, Dolby Vision/HDR handling, audio/subtitle track controls,
-  Stream Info, and sideload updates.
-- No bundled media catalog, no hosted streams, no account requirement.
+- **Plays what other apps refuse.** libmpv (ffmpeg) at the core decodes the
+  codecs, containers, and subtitle formats that send other apps reaching for an
+  external player. The TV app picks the engine per source — mpv for the widest
+  coverage, the box's own hardware decoder when a title needs true Dolby Vision —
+  with automatic fallback.
+- **Full fidelity.** Dolby Vision tone-mapping, HEVC/AV1 10-bit, TrueHD/DTS-HD
+  lossless decode or receiver passthrough, HDR — handed to real hardware, never
+  silently transcoded down.
+- **Language, guaranteed.** Preferred audio and subtitle languages are remembered
+  and re-applied on every title, so episode two doesn't undo episode one.
+- **Built-in polish.** Frame-exact seeks, thumbnail scrub on network streams,
+  Skip Intro/Recap/Credits, Up Next for binges, and exact-source resume (same
+  release, same second).
+- **Native on both.** macOS is SwiftUI around libmpv with a gpu-next shader
+  pipeline, on-device Whisper subtitles, picture-in-picture, and self-updates.
+  Android TV is Jetpack Compose, remote-first, verified to 4K AV1 on low-cost
+  boxes.
+- **Live channels.** M3U and Xtream playlists play direct through the native
+  player with a guide, plus a public lineup out of the box.
+- **Yours, private.** No bundled catalog, no hosted streams, no account, no
+  trackers; on-device discovery; end-to-end-encrypted pairing between devices.
 
 ## Screenshots
 
@@ -70,25 +85,26 @@ xattr -dr com.apple.quarantine /Applications/Sipario.app
 
 ### Android TV
 
-Download `sipario-android-tv-v1.4.9.apk` and sideload it on an Android TV or
-Google TV device.
+Download `Sipario-TV.apk` and sideload it on an Android TV or Google TV device.
 
 With adb:
 
 ```bash
-adb install -r sipario-android-tv-v1.4.9.apk
+adb install -r Sipario-TV.apk
 ```
 
-The APK is version `1.4.9` / versionCode `21`.
+The current APK is version `1.5.10` / versionCode `33`. After the first install
+the app checks for updates itself, so later versions arrive without another
+manual sideload.
 
 ## Checksums
 
 ```text
-Sipario-macos.dmg
+Sipario-macos.dmg (macos-v0.41.0)
 sha256 bf5a37388b77d584c8f62f1b806b6c5d6d9d06959390154d8f8a7984fe53360f
 
-sipario-android-tv-v1.4.9.apk
-sha256 39985790fa47f7616c28be5a0872db0e417715d1c9a81e59dbdf1af1a5ac68dc
+Sipario-TV.apk (android-tv-v1.5.10)
+sha256 4a34dd3ad9d4984fe8053befe10f4dc6dd997eb40fff702aa492755aa0b7af6a
 ```
 
 ## Feedback
