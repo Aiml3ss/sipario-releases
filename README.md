@@ -20,7 +20,7 @@ not contain the development source tree; active development stays in the private
 | Platform | Current Download | Version | Release Notes |
 |---|---|---|---|
 | macOS desktop | [Download the DMG](https://github.com/Aiml3ss/sipario-releases/releases/latest/download/Sipario-macos.dmg) | 0.44.0 | [macos-v0.44.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.44.0) |
-| Android TV | [Download the APK](https://github.com/Aiml3ss/sipario-releases/releases/latest/download/Sipario-TV.apk) | 1.8.2 | [android-tv-v1.8.2](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.8.2) |
+| Android TV | [Download the APK](https://github.com/Aiml3ss/sipario-releases/releases/latest/download/Sipario-TV.apk) | 1.8.3 | [android-tv-v1.8.3](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.8.3) |
 <!-- versions:table:end -->
 
 Stable website links:
@@ -98,7 +98,7 @@ adb install -r Sipario-TV.apk
 ```
 
 <!-- versions:apk-note:begin -->
-The current APK is version `1.8.2`.
+The current APK is version `1.8.3`.
 <!-- versions:apk-note:end -->
 After the first install the app checks for updates itself, so later versions
 arrive without another manual sideload.
@@ -110,8 +110,8 @@ arrive without another manual sideload.
 Sipario-macos.dmg (macos-v0.44.0)
 sha256 5d44353756746c22248b81f4594da7e3a12182a88802fc5fd9db3ee4248e6633
 
-Sipario-TV.apk (android-tv-v1.8.2)
-sha256 46f7ce96a46f9d15d5a31759f80380956613f099193f4ab97badd5b0ad635bc5
+Sipario-TV.apk (android-tv-v1.8.3)
+sha256 13148afee9bfb5e484d1e262eb39e003d01639902cd33560e71322ec997c3413
 ```
 <!-- versions:checksums:end -->
 
