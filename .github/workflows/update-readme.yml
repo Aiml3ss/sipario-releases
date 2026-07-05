@@ -1,0 +1,88 @@
+# Keeps README.md's version-pinned sections honest on every release.
+#
+# The download links themselves are evergreen (releases/latest/download/…),
+# but the README also shows the current VERSION NUMBERS, the release-notes
+# links, and the sha256 checksums — those go stale the moment a release is
+# cut unless something rewrites them. This workflow is that something: on
+# every release publish/edit/delete (or a manual dispatch) it finds the
+# newest macos-v* and android-tv-v* releases, re-downloads the canonical
+# assets, recomputes checksums, and runs .github/scripts/update-readme.py
+# to regenerate the marked regions.
+#
+# Companion to preserve-assets.yml (which re-attaches missing canonical
+# assets on publish). If an asset is missing here, the download fails and
+# the run goes red — that is a feature: it means the carry-forward rule was
+# broken and the release needs fixing, not the README.
+
+name: Update README versions
+
+on:
+  release:
+    types: [published, edited, deleted]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-readme
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Resolve newest versions and checksums
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          tags=$(gh api "repos/$REPO/releases?per_page=100" --jq '.[].tag_name')
+          mac_ver=$(printf '%s\n' "$tags" | sed -n 's/^macos-v//p' | sort -V | tail -1)
+          tv_ver=$(printf '%s\n' "$tags" | sed -n 's/^android-tv-v//p' | sort -V | tail -1)
+          if [ -z "$mac_ver" ] || [ -z "$tv_ver" ]; then
+            echo "::error::could not resolve newest macos-v*/android-tv-v* releases (mac='$mac_ver' tv='$tv_ver')"
+            exit 1
+          fi
+          echo "newest: macos-v$mac_ver / android-tv-v$tv_ver"
+
+          # Checksums come from the same evergreen URLs the site uses. A 404
+          # here means the latest release is missing a canonical asset.
+          curl -fsSL --retry 5 --retry-all-errors -o /tmp/Sipario-macos.dmg \
+            "https://github.com/$REPO/releases/latest/download/Sipario-macos.dmg"
+          curl -fsSL --retry 5 --retry-all-errors -o /tmp/Sipario-TV.apk \
+            "https://github.com/$REPO/releases/latest/download/Sipario-TV.apk"
+
+          {
+            echo "MAC_VER=$mac_ver"
+            echo "TV_VER=$tv_ver"
+            echo "MAC_SHA=$(sha256sum /tmp/Sipario-macos.dmg | cut -d' ' -f1)"
+            echo "TV_SHA=$(sha256sum /tmp/Sipario-TV.apk | cut -d' ' -f1)"
+          } >> "$GITHUB_ENV"
+
+      - name: Regenerate README sections
+        env:
+          REPO: ${{ github.repository }}
+        run: python3 .github/scripts/update-readme.py
+
+      - name: Commit if changed
+        env:
+          MAC_VER: ${{ env.MAC_VER }}
+          TV_VER: ${{ env.TV_VER }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet README.md; then
+            echo "README already current — nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: update README versions to macos-v$MAC_VER / android-tv-v$TV_VER"
+          git push
