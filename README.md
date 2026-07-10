@@ -20,7 +20,7 @@ not contain the development source tree; active development stays in the private
 | Platform | Current Download | Version | Release Notes |
 |---|---|---|---|
 | macOS desktop | [Download the DMG](https://sipario.tv/download/mac) | 0.50.1 | [macos-v0.50.1](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.50.1) |
-| Windows desktop | [Download the MSI](https://sipario.tv/download/windows) | 0.1.0 | [windows-v0.1.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.1.0) |
+| Windows desktop | [Download the MSI](https://sipario.tv/download/windows) | 0.1.1 | [windows-v0.1.1](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.1.1) |
 | Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.12.0 | [android-tv-v1.12.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.12.0) |
 <!-- versions:table:end -->
 
@@ -120,8 +120,8 @@ arrive without another manual sideload.
 Sipario-macos.dmg (macos-v0.50.1)
 sha256 2f714c9516da540d5624c69e090adf37613b4094d58c8ade7cce696a22a9f7b3
 
-Sipario-windows.msi (windows-v0.1.0)
-sha256 27a8b50028baec333cf53e774289bede5491409ff9342d618d08ad1655f80ce8
+Sipario-windows.msi (windows-v0.1.1)
+sha256 458ac0bb42ec9a790f568a91d9b01043c9ba4d2492f4d9077393f22d169fbfba
 
 Sipario-TV.apk (android-tv-v1.12.0)
 sha256 4e84755a43f56848838bf6a1f3314714f6f18b338d2561272c0eeb2c5e722012
