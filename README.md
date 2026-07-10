@@ -20,9 +20,18 @@ not contain the development source tree; active development stays in the private
 | Platform | Current Download | Version | Release Notes |
 |---|---|---|---|
 | macOS desktop | [Download the DMG](https://sipario.tv/download/mac) | 0.50.1 | [macos-v0.50.1](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.50.1) |
-| Windows desktop | [Download the MSI](https://sipario.tv/download/windows) | 0.1.2 | [windows-v0.1.2](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.1.2) |
+| Windows desktop **(alpha)** | [Download the MSI](https://sipario.tv/download/windows) | 0.1.2 | [windows-v0.1.2](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.1.2) |
 | Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.13.0 | [android-tv-v1.13.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.13.0) |
 <!-- versions:table:end -->
+
+> [!WARNING]
+> **Windows is an early alpha.** It runs, but it is rough — expect bugs,
+> rough edges, and the occasional crash. macOS and Android TV are the mature,
+> day-to-day apps; the Windows build is young and catching up fast. If that is
+> not for you yet, grab the Mac or TV app instead. Anything broken? Please file
+> it in [Issues](https://github.com/Aiml3ss/sipario-releases/issues) — that
+> is exactly what moves it toward stable. (It is also unsigned, so SmartScreen
+> will warn on first run.)
 
 Stable website links:
 
@@ -90,6 +99,9 @@ xattr -dr com.apple.quarantine /Applications/Sipario.app
 ```
 
 ### Windows
+
+**Alpha — early and rough.** Fine for the curious and for feedback; not yet the
+smooth experience the Mac and TV apps are.
 
 Download `Sipario-windows.msi` and run it (per-user install, no admin needed).
 
