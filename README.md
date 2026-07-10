@@ -7,7 +7,7 @@
 <h1 align="center">Sipario Releases</h1>
 
 <p align="center">
-  Public downloads for the Sipario macOS desktop app and Android TV APK.
+  Public downloads for the Sipario macOS and Windows desktop apps and the Android TV APK.
 </p>
 
 This repository is the public release shelf for Sipario. It intentionally does
@@ -20,12 +20,14 @@ not contain the development source tree; active development stays in the private
 | Platform | Current Download | Version | Release Notes |
 |---|---|---|---|
 | macOS desktop | [Download the DMG](https://sipario.tv/download/mac) | 0.50.1 | [macos-v0.50.1](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.50.1) |
+| Windows desktop | [Download the MSI](https://sipario.tv/download/windows) | 0.1.0 | [windows-v0.1.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.1.0) |
 | Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.12.0 | [android-tv-v1.12.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.12.0) |
 <!-- versions:table:end -->
 
 Stable website links:
 
 - <https://sipario.tv/download/mac>
+- <https://sipario.tv/download/windows>
 - <https://sipario.tv/download/tv>
 
 On the TV itself: open the **Downloader** app and enter code **5358756**.
@@ -48,10 +50,10 @@ not a catalog.
 - **Built-in polish.** Frame-exact seeks, thumbnail scrub on network streams,
   Skip Intro/Recap/Credits, Up Next for binges, and exact-source resume (same
   release, same second).
-- **Native on both.** macOS is SwiftUI around libmpv with a gpu-next shader
+- **Native everywhere.** macOS is SwiftUI around libmpv with a gpu-next shader
   pipeline, on-device Whisper subtitles, picture-in-picture, and self-updates.
-  Android TV is Jetpack Compose, remote-first, verified to 4K AV1 on low-cost
-  boxes.
+  Windows is Dioxus/Blitz around libmpv with the same shared engine. Android TV
+  is Jetpack Compose, remote-first, verified to 4K AV1 on low-cost boxes.
 - **Live channels.** M3U and Xtream playlists play direct through the native
   player with a guide, plus a public lineup out of the box.
 - **Yours, private.** No bundled catalog, no hosted streams, no account, no
@@ -87,6 +89,14 @@ Control-click -> Open, or clear the quarantine flag:
 xattr -dr com.apple.quarantine /Applications/Sipario.app
 ```
 
+### Windows
+
+Download `Sipario-windows.msi` and run it (per-user install, no admin needed).
+
+The current Windows build is not Authenticode-signed yet, so Microsoft
+Defender SmartScreen will warn on first run. Click **More info -> Run anyway**.
+After the first install the app checks for updates itself.
+
 ### Android TV
 
 Download `Sipario-TV.apk` and sideload it on an Android TV or Google TV device.
@@ -109,6 +119,9 @@ arrive without another manual sideload.
 ```text
 Sipario-macos.dmg (macos-v0.50.1)
 sha256 2f714c9516da540d5624c69e090adf37613b4094d58c8ade7cce696a22a9f7b3
+
+Sipario-windows.msi (windows-v0.1.0)
+sha256 27a8b50028baec333cf53e774289bede5491409ff9342d618d08ad1655f80ce8
 
 Sipario-TV.apk (android-tv-v1.12.0)
 sha256 4e84755a43f56848838bf6a1f3314714f6f18b338d2561272c0eeb2c5e722012
