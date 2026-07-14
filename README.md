@@ -21,7 +21,7 @@ not contain the development source tree; active development stays in the private
 |---|---|---|---|
 | macOS desktop | [Download the DMG](https://sipario.tv/download/mac) | 0.50.1 | [macos-v0.50.1](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.50.1) |
 | Windows desktop **(alpha)** | [Download the MSI](https://sipario.tv/download/windows) | 0.1.2 | [windows-v0.1.2](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.1.2) |
-| Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.15.1 | [android-tv-v1.15.1](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.15.1) |
+| Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.15.2 | [android-tv-v1.15.2](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.15.2) |
 <!-- versions:table:end -->
 
 > [!WARNING]
@@ -120,7 +120,7 @@ adb install -r Sipario-TV.apk
 ```
 
 <!-- versions:apk-note:begin -->
-The current APK is version `1.15.1`.
+The current APK is version `1.15.2`.
 <!-- versions:apk-note:end -->
 After the first install the app checks for updates itself, so later versions
 arrive without another manual sideload.
@@ -135,8 +135,8 @@ sha256 2f714c9516da540d5624c69e090adf37613b4094d58c8ade7cce696a22a9f7b3
 Sipario-windows.msi (windows-v0.1.2)
 sha256 9dfd13e026e021f0c103cb7e20d7a664f3a7ab0714e1ca182cd7c86ff757b5d9
 
-Sipario-TV.apk (android-tv-v1.15.1)
-sha256 c96e4dcf69e5ed8bc2d1ad8f47663b9ce7acfa0305df5757544221b6211caa5d
+Sipario-TV.apk (android-tv-v1.15.2)
+sha256 05a0a5ab3ab0b1e165e631b619b4de02d960f2177160bd64c6f69cff560ede39
 ```
 <!-- versions:checksums:end -->
 
