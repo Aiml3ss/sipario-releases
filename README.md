@@ -7,12 +7,17 @@
 <h1 align="center">Sipario Releases</h1>
 
 <p align="center">
-  Public downloads for the Sipario macOS and Windows desktop apps and the Android TV APK.
+  <strong>Native playback for sources you bring.</strong><br>
+  macOS &nbsp;·&nbsp; Windows &nbsp;·&nbsp; Android TV
 </p>
 
 This repository is the public release shelf for Sipario. It intentionally does
 not contain the development source tree; active development stays in the private
 `Aiml3ss/sipario` repo while binaries ship here.
+
+Sipario pairs streaming-app convenience with local-player fidelity: native UI,
+native hardware decode, broad codec support, exact resume, and no server-side
+transcoding requirement.
 
 ## Downloads
 
@@ -41,32 +46,85 @@ Stable website links:
 
 On the TV itself: open the **Downloader** app and enter code **5358756**.
 
-## What You Get
+## Why Sipario Is Different
 
-Sipario is a native media player for your own sources — built around the player,
-not a catalog.
+Sipario starts with playback rather than a hosted catalog or transcoding server.
+The goal is simple: open your source quickly, keep its original quality, and make
+the hard formats behave like ordinary video.
 
-- **Plays what other apps refuse.** libmpv (ffmpeg) at the core decodes the
-  codecs, containers, and subtitle formats that send other apps reaching for an
-  external player. The TV app picks the engine per source — mpv for the widest
-  coverage, the box's own hardware decoder when a title needs true Dolby Vision —
-  with automatic fallback.
-- **Full fidelity.** Dolby Vision tone-mapping, HEVC/AV1 10-bit, TrueHD/DTS-HD
-  lossless decode or receiver passthrough, HDR — handed to real hardware, never
-  silently transcoded down.
-- **Language, guaranteed.** Preferred audio and subtitle languages are remembered
-  and re-applied on every title, so episode two doesn't undo episode one.
-- **Built-in polish.** Frame-exact seeks, thumbnail scrub on network streams,
-  Skip Intro/Recap/Credits, Up Next for binges, and exact-source resume (same
-  release, same second).
-- **Native everywhere.** macOS is SwiftUI around libmpv with a gpu-next shader
-  pipeline, on-device Whisper subtitles, picture-in-picture, and self-updates.
-  Windows is Dioxus/Blitz around libmpv with the same shared engine. Android TV
-  is Jetpack Compose, remote-first, verified to 4K AV1 on low-cost boxes.
-- **Live channels.** M3U and Xtream playlists play direct through the native
-  player with a guide, plus a public lineup out of the box.
-- **Yours, private.** No bundled catalog, no hosted streams, no account, no
-  trackers; on-device discovery; end-to-end-encrypted pairing between devices.
+### Real-time Dolby Vision Profile 7 → Profile 8.1
+
+Android TV can convert a Dolby Vision Profile-7 Blu-ray remux into Profile 8.1
+**on the box, while it plays**. This is NAL-level bitstream surgery, not a video
+transcode:
+
+- the device's hardware Dolby Vision profiles are probed before routing;
+- the original HEVC base layer stays compressed and untouched;
+- per-frame Dolby Vision RPU metadata is rewritten from P7 to P8.1;
+- the enhancement layer is removed, with no decode/re-encode generation loss;
+- the result is streamed to the TV box's native Profile-8 hardware decoder;
+- converter-aware seek, resume, buffering, and automatic mpv/HDR10 fallback keep
+  the title playable if the hardware path fails.
+
+That lets a Profile-7 MKV trigger real Dolby Vision on supported boxes that can
+decode Profile 8 but reject Profile 7—instead of quietly showing only the darker
+HDR10-compatible base layer.
+
+> [!NOTE]
+> P7 → P8.1 conversion is Android-TV-only, opt-in under Settings, and verified on
+> the onn 4K Plus. Dolby Vision behavior still depends on the TV, box, firmware,
+> and HDMI chain.
+
+### Playback work beyond a stock player
+
+| Capability | What Sipario does |
+|---|---|
+| **Per-title engine routing** | Android TV chooses native mpv for the broadest format coverage or Media3/MediaCodec for true hardware Dolby Vision, then falls back automatically when a path fails. |
+| **Network-first reliability** | Parallel ranged reads, bounded buffers, reconnect/resume logic, source re-resolution, and converter-specific open-GOP handling keep large 4K network files moving on low-cost hardware. |
+| **Subtitle matching** | Embedded and add-on subtitles are ranked against the exact release and content fingerprint—not only language—then remembered across pause, seek, resume, and later episodes. PGS/VobSub bitmap subtitles also render on the Android Dolby Vision path. |
+| **Audio sink honesty** | TrueHD, DTS-HD, AC-3, E-AC-3/Atmos, and other formats decode to multichannel PCM by default. Optional passthrough is limited to formats the connected HDMI sink actually advertises; unsupported formats fall back to PCM. |
+| **Exact continuity** | Continue Watching stores the exact title, episode, source, subtitle choice, and position. Optional Trakt sync updates on launch; encrypted Sipario pairing moves library state between devices without a Sipario account. |
+| **Source intelligence** | Streams are parsed, scored, and ranked by resolution, codec, HDR, audio, size, cache status, and source health before playback starts. |
+
+## Built for Actual Watching
+
+- **Persistent playback speed.** Set a default—including 1.5×—and every new
+  video starts there across both Android TV playback engines. Speed remains
+  adjustable inside the player.
+- **Binge controls.** Chapters, Skip Intro/Recap/Credits, Up Next, Start Over,
+  exact resume, and Continue Watching actions are built in.
+- **Real subtitle control.** Preferred language, exact-track memory, forced/SDH
+  awareness, subtitle delay, size, color, style, and vertical position.
+- **A useful player HUD.** Audio/subtitle/display panels, codec and HDR info,
+  buffering and link-speed feedback, aspect-ratio Fit/Stretch/Zoom, and
+  stats-for-nerds diagnostics.
+- **Fast discovery.** Unified search across metadata and add-on catalogs, genre
+  filters, voice search on TV, cast/studio detail, ratings, trailers, favorites,
+  and recommendations that learn on-device.
+- **Serious live TV.** M3U and Xtream sources, XMLTV guide data, favorites,
+  recent channels, search, A–Z sorting, category management, an in-player guide,
+  and QR-assisted setup.
+- **Self-updates.** macOS, Windows, and sideloaded Android TV builds check for new
+  releases without making users reinstall from scratch.
+
+## Native on Every Platform
+
+| Platform | Native stack | Highlights |
+|---|---|---|
+| **macOS** | SwiftUI + libmpv/gpu-next | Hardware decode, HDR pipeline, picture-in-picture, thumbnail scrubbing, on-device Whisper subtitle generation, menu-bar and keyboard control, self-update. |
+| **Android TV** | Jetpack Compose + libmpv + Media3 | Remote-first 10-foot UI, per-title engine routing, real hardware Dolby Vision, P7 → P8.1 conversion, 4K HEVC/AV1, sink-gated audio passthrough, voice search, ambient mode, self-update. |
+| **Windows (alpha)** | Dioxus/Blitz + libmpv | Shared Rust source engine, native desktop player, hardware decode, HDR10 through D3D11, live TV, library/pairing, keyboard-first controls, self-update. |
+
+The apps share a Rust core for source parsing, stream ranking, metadata, live-TV
+inputs, skip markers, and safety checks while keeping each platform's playback
+surface native.
+
+## Your Sources, Your Data
+
+Sipario supports user-supplied Stremio-compatible add-ons, M3U/Xtream live-TV
+sources, local files and URLs, and personal-library bridges such as Plex or
+Jellyfin where available. Sipario hosts no media, bundles no piracy catalog, and
+requires no Sipario account. Trakt integration is optional.
 
 ## Screenshots
 
