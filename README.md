@@ -54,7 +54,7 @@ the hard formats behave like ordinary video.
 
 ### Real-time Dolby Vision Profile 7 → Profile 8.1
 
-Android TV can convert a Dolby Vision Profile-7 Blu-ray remux into Profile 8.1
+Android TV can convert a Dolby Vision Profile-7 MKV into Profile 8.1
 **on the box, while it plays**. This is NAL-level bitstream surgery, not a video
 transcode:
 
