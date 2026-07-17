@@ -26,7 +26,7 @@ transcoding requirement.
 |---|---|---|---|
 | macOS desktop | [Download the DMG](https://sipario.tv/download/mac) | 0.53.0 | [macos-v0.53.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.53.0) |
 | Windows desktop **(alpha)** | [Download the MSI](https://sipario.tv/download/windows) | 0.2.0 | [windows-v0.2.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.2.0) |
-| Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.18.0 | [android-tv-v1.18.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.18.0) |
+| Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.19.0 | [android-tv-v1.19.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.19.0) |
 <!-- versions:table:end -->
 
 > [!WARNING]
@@ -178,7 +178,7 @@ adb install -r Sipario-TV.apk
 ```
 
 <!-- versions:apk-note:begin -->
-The current APK is version `1.18.0`.
+The current APK is version `1.19.0`.
 <!-- versions:apk-note:end -->
 After the first install the app checks for updates itself, so later versions
 arrive without another manual sideload.
@@ -193,8 +193,8 @@ sha256 0080c856497681d9ee96ebf7dceaa26ddc47af1fa9031ff605458a483f07501b
 Sipario-windows.msi (windows-v0.2.0)
 sha256 53adb33c8a8065740d31cee5828dc27f2c61793512febb23a6e51047da6a3dc2
 
-Sipario-TV.apk (android-tv-v1.18.0)
-sha256 13f022435e689b55d0a58b0d3f601593703d0547312b4d6d495b6603f49d8e31
+Sipario-TV.apk (android-tv-v1.19.0)
+sha256 eda1799346e2f9e8d8eb585cf1157fb15b67b9b8084e84725f0f8e6c44e970df
 ```
 <!-- versions:checksums:end -->
 
