@@ -188,7 +188,7 @@ arrive without another manual sideload.
 <!-- versions:checksums:begin -->
 ```text
 Sipario-macos.dmg (macos-v0.53.0)
-sha256 4b0f5902e7060aea85b234d63be1ab1fe04d6674004bffa2d85aa294b978bbf5
+sha256 0080c856497681d9ee96ebf7dceaa26ddc47af1fa9031ff605458a483f07501b
 
 Sipario-windows.msi (windows-v0.2.0)
 sha256 53adb33c8a8065740d31cee5828dc27f2c61793512febb23a6e51047da6a3dc2
