@@ -111,7 +111,7 @@ HDR10-compatible base layer.
 
 | Platform | Native stack | Highlights |
 |---|---|---|
-| **macOS** | SwiftUI + libmpv/gpu-next | Hardware decode, HDR pipeline, a default shader chain plus optional MetalFX ML upscaling, picture-in-picture, thumbnail scrubbing, on-device Whisper subtitle generation, menu-bar and keyboard control, self-update. |
+| **macOS** | SwiftUI + libmpv/gpu-next | Hardware decode, HDR pipeline, a default shader chain plus optional MetalFX ML upscaling, picture-in-picture, thumbnail scrubbing, automatic bitmap-to-text subtitle upgrade, ⌘K command palette, menu-bar and keyboard control, self-update. |
 | **Android TV** | Jetpack Compose + libmpv + Media3 | Remote-first 10-foot UI, per-title engine routing, real hardware Dolby Vision, P7 → P8.1 conversion, 4K HEVC/AV1, sink-gated audio passthrough, voice search, ambient mode, self-update. |
 | **Windows (alpha)** | Dioxus/Blitz + libmpv | Shared Rust source engine, native desktop player, hardware decode, HDR10 through D3D11, live TV, library/pairing, keyboard-first controls, self-update. |
 
@@ -122,9 +122,9 @@ surface native.
 ## Your Sources, Your Data
 
 Sipario supports user-supplied Stremio-compatible add-ons, M3U/Xtream live-TV
-sources, local files and URLs, and personal-library bridges such as Plex or
-Jellyfin where available. Sipario hosts no media, bundles no piracy catalog, and
-requires no Sipario account. Trakt integration is optional.
+sources, local and NAS files and URLs, and Jellyfin or Emby personal-library
+bridges (a Plex bridge is on the way). Sipario hosts no media, bundles no piracy
+catalog, and requires no Sipario account. Trakt integration is optional.
 
 ## Screenshots
 
