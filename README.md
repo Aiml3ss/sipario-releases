@@ -1,7 +1,24 @@
+<p align="center">
+  <a href="https://sipario.tv">
+    <img src="https://sipario.tv/favicon.svg" alt="Sipario" width="88">
+  </a>
+</p>
+
 # Sipario Releases
 
 Public downloads for [Sipario](https://sipario.tv), a native media player for
 sources you provide. Sipario hosts no media and requires no account.
+
+## What Sipario does
+
+- Native playback with hardware decoding for 4K, HDR, Dolby Vision, broad audio,
+  and text or bitmap subtitles.
+- Exact resume, Continue Watching, track memory, Skip Intro/Credits, and Up Next.
+- User-provided Stremio-compatible add-ons, M3U/Xtream, local or NAS media, and
+  Jellyfin/Emby libraries.
+- Encrypted device pairing and sync without a Sipario account.
+
+Feature and format support varies by platform, device, and connected display.
 
 ## Download
 
