@@ -11,12 +11,18 @@ sources you provide. Sipario hosts no media and requires no account.
 
 ## What Sipario does
 
-- Native playback with hardware decoding for 4K, HDR, Dolby Vision, broad audio,
-  and text or bitmap subtitles.
-- Exact resume, Continue Watching, track memory, Skip Intro/Credits, and Up Next.
-- User-provided Stremio-compatible add-ons, M3U/Xtream, local or NAS media, and
-  Jellyfin/Emby libraries.
-- Encrypted device pairing and sync without a Sipario account.
+- **Native playback:** 4K HEVC/AV1, HDR, Dolby Vision, multichannel audio, and
+  preferred-language external SRT subtitles, subject to device support.
+- **Dolby Vision conversion on Android TV:** detects supported profiles and can
+  convert confirmed dual-layer Profile 7 MKVs to single-layer Profile 8.1
+  on-device without re-encoding the video.
+- **Profiles and sync:** optional viewer profiles keep libraries, history,
+  progress, and preferences separate, with shared or profile-specific sources.
+  Encrypted sync moves library state across devices without a Sipario account.
+- **Trakt:** optional watched history, playback progress, watchlist sync, and
+  playback scrobbling.
+- **Your sources:** Stremio-compatible add-ons, M3U/Xtream, local or NAS media,
+  and Jellyfin/Emby libraries.
 
 Feature and format support varies by platform, device, and connected display.
 
