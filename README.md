@@ -226,7 +226,14 @@ updaters keep working:
 
 <!-- versions:checksums:begin -->
 ```text
-Published on each release by .github/workflows/update-readme.yml.
+Sipario-macos.dmg (macos-v0.56.4)
+sha256 8c52252e8395f37b830adeba197588080909d622e3b9989ed715d7349e6aaa22
+
+Sipario-windows.msi (windows-v0.2.0)
+sha256 53adb33c8a8065740d31cee5828dc27f2c61793512febb23a6e51047da6a3dc2
+
+Sipario-TV.apk (android-tv-v1.24.14)
+sha256 d1fc7ef73ff7b876a12a5ef574623ca96d8f11c6ebc97b04140d93c7ea52df49
 ```
 <!-- versions:checksums:end -->
 
