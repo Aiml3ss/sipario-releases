@@ -191,13 +191,13 @@ connected display.
 |---|---|---|---|
 | macOS desktop | [Download the DMG](https://sipario.tv/download/mac) | 0.57.1 | [macos-v0.57.1](https://github.com/Aiml3ss/sipario-releases/releases/tag/macos-v0.57.1) |
 | Windows desktop **(alpha)** | [Download the MSI](https://sipario.tv/download/windows) | 0.2.0 | [windows-v0.2.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/windows-v0.2.0) |
-| Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.30.5 | [android-tv-v1.30.5](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.30.5) |
+| Android TV | [Download the APK](https://sipario.tv/download/tv) | 1.31.0 | [android-tv-v1.31.0](https://github.com/Aiml3ss/sipario-releases/releases/tag/android-tv-v1.31.0) |
 <!-- versions:table:end -->
 
 Android TV users can also open Downloader and enter code **5358756**.
 
 <!-- versions:apk-note:begin -->
-The current APK is version `1.30.5`.
+The current APK is version `1.31.0`.
 <!-- versions:apk-note:end -->
 
 [Latest release notes](https://github.com/Aiml3ss/sipario-releases/releases/latest)
@@ -232,8 +232,8 @@ sha256 3f53e5e0e0a27a048ea1de56cd028546648411ce4932acbadb5fa886fefd4743
 Sipario-windows.msi (windows-v0.2.0)
 sha256 53adb33c8a8065740d31cee5828dc27f2c61793512febb23a6e51047da6a3dc2
 
-Sipario-TV.apk (android-tv-v1.30.5)
-sha256 dd9bf4f5ff9c31515dc02b656963b5c4c7f54701e2c995b22822d8d874bb1a5e
+Sipario-TV.apk (android-tv-v1.31.0)
+sha256 6458b7a0fadf2a4c82883d06fedaba47c7a8ffd9216730151c68afde72390955
 ```
 <!-- versions:checksums:end -->
 
